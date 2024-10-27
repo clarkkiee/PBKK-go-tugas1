@@ -19,12 +19,16 @@ func main () {
 	
 	read := bufio.NewReader(os.Stdin)
 	fmt.Print("Input a string : ")
-	input, err := read.ReadString('\n')
+	input, _ := read.ReadString('\n')
 	
 	input = strings.TrimSpace(input)
 	var chunked []string
 	
 	temp := strings.Split(input, " ")
+	if len(temp) < 3 {
+		fmt.Println("Minimum length of string is 3 words")
+		os.Exit(1)
+	}
 	for i := range len(temp) {
 		chunked = append(chunked, reverse(temp[i]))
 	} 

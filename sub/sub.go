@@ -20,8 +20,12 @@
 		read := bufio.NewReader(os.Stdin)
 		fmt.Print("Input a string : ")
 		input, _ := read.ReadString('\n')
-		
+
 		for _, word := range strings.Fields(input) {
+			if len(strings.Fields(input)) < 3 {
+				fmt.Println("Minimum length of string is 3 words")
+				break
+			} 
 			fmt.Println(reverse(word))
 		}
 
